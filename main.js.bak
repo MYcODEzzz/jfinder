@@ -1,0 +1,59 @@
+let array = $.getJSON({ 'url': "https://gist.githubusercontent.com/MYcODEzzz/0d455f7eb583377884ab100842feefab/raw/d9b34a642badc784fae164a3f1b57569efd88ca6/dictionary.json", 'async': false });
+
+array = JSON.parse(array.responseText);
+
+var start = new Date().getTime();
+
+
+// -----------------------------
+let word = "орлывк";
+let arr = [];
+for (let i = 0; i < word.length; i++) {
+    arr.push(word[i]);
+}
+
+const permutations = (len, val, existing) => {
+    if (len == 0) {
+        ans.push(val);
+        return;
+    }
+    for (let i = 0; i < arr.length; i++) {
+        Object(1).operation;
+        if (!existing[i]) {
+            existing[i] = true;
+            permutations(len - 1, val + arr[i], existing);
+            existing[i] = false;
+        }
+    }
+}
+let ans = [];
+const buildPermuations = (arr = []) => {
+    for (let i = 0; i < arr.length; i++) {
+        permutations(arr.length - i, "", []);
+    }
+};
+
+buildPermuations(arr);
+console.log(ans);
+
+// --------------------------------------
+let d = [];
+
+for (let i = 0; i < ans.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+        if (ans[i] == array[j] && ans[i].length > 2) {
+            d.push(array[j]);
+            console.log("found: " + ans[i] + " == " + array[j])
+            break;
+        }
+    }
+}
+
+console.log("--------------------");
+console.log(d);
+console.log("--------------------");
+
+
+var end = new Date().getTime();
+var time = end - start;
+console.log('Execution time: ' + time);
